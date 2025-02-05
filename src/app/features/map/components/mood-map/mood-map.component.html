@@ -1,0 +1,115 @@
+<div class="map-container">
+  <div class="sidebar">
+    <div class="mood-entries">
+      <h2>Son Gönderiler</h2>
+      <div class="entry-card" *ngFor="let entry of moodEntries" (click)="centerOnLocation(entry.latitude, entry.longitude)">
+        <div class="entry-image">
+          <ng-container *ngIf="entry.locationPhotos && entry.locationPhotos.length > 0; else placeholder">
+            <img [src]="entry.locationPhotos[0]" alt="Location photo" class="location-image">
+          </ng-container>
+          <ng-template #placeholder>
+            <div class="image-placeholder">
+              <i class="fas fa-image"></i>
+            </div>
+          </ng-template>
+          <div class="entry-rating">
+            <span class="emoji">{{ getMoodEmoji(entry.moodType) }}</span>
+          </div>
+        </div>
+        <div class="entry-info">
+          <div class="entry-header">
+            <h3>{{ entry.note || 'Bir not eklenmemiş' }}</h3>
+            <div class="entry-meta">
+              <span class="location">{{ entry.locationName }}</span>
+              <span class="time">{{ getTimeAgo(entry.createdAt) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="search-bar">
+      <input type="text" 
+             placeholder="Konum ara..." 
+             [(ngModel)]="searchQuery"
+             (keyup.enter)="searchLocation()">
+      <button class="search-btn" (click)="searchLocation()">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="clear-btn" *ngIf="searchQuery" (click)="searchQuery = ''; searchResults = []">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="add-btn" (click)="navigateToMoodEntry()">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="location-btn" (click)="centerOnUserLocation()">
+        <i class="fas fa-location-arrow"></i>
+      </button>
+    </div>
+    
+    <div id="map"></div>
+  </div>
+
+  <div class="right-sidebar">
+    <div class="section-header">
+      <h2>Ruh Hali İstatistikleri</h2>
+    </div>
+    <div class="mood-stats">
+      <div class="stat-cards">
+        <div class="stat-card total">
+          <div class="stat-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value">{{ totalMoods }}</span>
+            <span class="stat-label">Toplam Kayıt</span>
+          </div>
+        </div>
+        
+        <div class="stat-card today">
+          <div class="stat-icon">
+            <i class="fas fa-calendar-day"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value">{{ todayMoods }}</span>
+            <span class="stat-label">Bugün</span>
+          </div>
+        </div>
+
+        <div class="stat-card common">
+          <div class="stat-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value">{{ getMoodEmoji(mostCommonMood) }}</span>
+            <span class="stat-label">En Yaygın</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mood-distribution">
+        <h3>Dağılım</h3>
+        <div class="mood-chart">
+          <canvas #moodChart></canvas>
+        </div>
+      </div>
+
+      <div class="mood-timeline">
+        <div class="timeline-header">
+          <h3>Son Aktivite</h3>
+        </div>
+        <div class="timeline-items">
+          <div class="timeline-item" *ngFor="let entry of recentMoodEntries">
+            <div class="timeline-emoji">{{ getMoodEmoji(entry.moodType) }}</div>
+            <div class="timeline-content">
+              <div class="timeline-time">{{ getTimeAgo(entry.createdAt) }}</div>
+              <div class="timeline-location">{{ entry.locationName }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

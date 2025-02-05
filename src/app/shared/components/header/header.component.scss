@@ -1,0 +1,100 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+    &:hover {
+      color: #007bff;
+    }
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+
+  a {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #007bff;
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+
+    &.active {
+      color: #007bff;
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+  }
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .profile-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 1rem;
+    background-color: transparent;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #f5f5f5;
+      border-color: #007bff;
+    }
+
+    .profile-photo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .username {
+      color: #333;
+      font-weight: 500;
+    }
+  }
+
+  .logout-button {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #dc3545;
+      color: white;
+    }
+  }
+} 

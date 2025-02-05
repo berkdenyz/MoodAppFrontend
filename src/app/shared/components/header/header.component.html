@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="logo">
+    <a routerLink="/">Ruh Hali Haritası</a>
+  </div>
+  
+  <nav class="nav-links">
+    <a routerLink="/map" routerLinkActive="active">Harita</a>
+    <a routerLink="/mood/entry" routerLinkActive="active">Ruh Hali Ekle</a>
+    <a routerLink="/analytics" routerLinkActive="active">Analizler</a>
+  </nav>
+
+  <div class="user-actions">
+    <button class="profile-button" routerLink="/profile" *ngIf="currentUser">
+      <img [src]="currentUser?.profilePictureUrl || 'assets/images/default-avatar.png'" 
+           alt="Profile photo" 
+           class="profile-photo">
+      <span class="username">
+        {{ currentUser.username }}
+      </span>
+    </button>
+    <button class="logout-button" (click)="logout()">
+      Çıkış Yap
+    </button>
+  </div>
+</header> 

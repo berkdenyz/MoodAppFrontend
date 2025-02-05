@@ -1,0 +1,97 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <h1>Profil Ayarları</h1>
+  </div>
+
+  <div class="profile-content" *ngIf="!isLoading; else loading">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+      <div class="profile-photo-section">
+        <div class="profile-photo">
+          <img [src]="profileForm.get('profilePictureUrl')?.value || 'assets/images/default-avatar.png'" 
+               alt="Profile photo">
+        </div>
+        <div class="photo-url-section">
+          <button mat-raised-button 
+                  type="button"
+                  color="primary" 
+                  (click)="togglePhotoEdit()"
+                  *ngIf="!isEditingPhoto">
+            Fotoğrafı Değiştir
+          </button>
+          <mat-form-field appearance="outline" *ngIf="isEditingPhoto">
+            <mat-label>Fotoğraf URL</mat-label>
+            <input matInput 
+                   formControlName="profilePictureUrl" 
+                   placeholder="Enter image URL">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Kullanıcı Adı</mat-label>
+        <input matInput formControlName="username" placeholder="Username">
+        <mat-error *ngIf="profileForm.get('username')?.errors?.['required']">
+          Kullanıcı adı gereklidir
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Email" type="email">
+        <mat-error *ngIf="profileForm.get('email')?.errors?.['required']">
+          Email gereklidir
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('email')?.errors?.['email']">
+          Lütfen geçerli bir email adresi giriniz
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>İsim</mat-label>
+        <input matInput formControlName="firstName" placeholder="First Name">
+        <mat-error *ngIf="profileForm.get('firstName')?.errors?.['required']">
+          İsim gereklidir
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Last Name">
+        <mat-error *ngIf="profileForm.get('lastName')?.errors?.['required']">
+          Soyisim gereklidir
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Biyografi</mat-label>
+        <textarea matInput 
+                  formControlName="bio" 
+                  placeholder="Tell us about yourself"
+                  rows="4">
+        </textarea>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button 
+                color="primary" 
+                type="submit"
+                [disabled]="profileForm.invalid || isLoading">
+          Kaydet
+        </button>
+        <button mat-raised-button 
+                color="warn" 
+                type="button"
+                (click)="deleteProfile()"
+                [disabled]="isLoading">
+          Profili Sil
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading-spinner">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</ng-template>

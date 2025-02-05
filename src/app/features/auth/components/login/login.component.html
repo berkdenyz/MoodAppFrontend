@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-icon">
+      <i class="fas fa-sign-in-alt"></i>
+    </div>
+    
+    <h2>Giriş Yap</h2>
+    <p class="subtitle">Ruh halinizi analiz etmenin eğlenceli yolu.</p>
+
+    <form class="login-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="input-with-icon">
+          <i class="far fa-envelope"></i>
+          <input 
+            type="email" 
+            placeholder="E-posta"
+            [(ngModel)]="loginForm.email" 
+            name="email" 
+            required
+            [disabled]="isLoading">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-with-icon">
+          <i class="fas fa-lock"></i>
+          <input 
+            type="password" 
+            placeholder="Şifre"
+            [(ngModel)]="loginForm.password" 
+            name="password" 
+            required
+            [disabled]="isLoading">
+          <i class="far fa-eye-slash password-toggle"></i>
+        </div>
+      </div>
+
+      <div class="forgot-password">
+        <a href="#">Şifremi unuttum?</a>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="login-button" [disabled]="isLoading">
+        Giriş Yap
+      </button>
+
+      <div class="register-section">
+        <p>Hesabınız yok mu?</p>
+        <button type="button" class="register-button" routerLink="/auth/register">
+          Kayıt Ol
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

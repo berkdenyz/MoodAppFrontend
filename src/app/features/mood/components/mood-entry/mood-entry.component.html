@@ -1,0 +1,54 @@
+<div class="mood-entry-container">
+  <form [formGroup]="moodForm" (ngSubmit)="onSubmit()" class="mood-entry-form">
+    <h2>Nasıl hissettiğiniz hakkında bir not ekleyin... (isteğe bağlı)</h2>
+
+    <!-- Location Status -->
+    <div class="location-status" [ngClass]="{'error': !locationPermissionGranted}">
+      <i class="fas" [ngClass]="{'fa-map-marker-alt': locationPermissionGranted, 'fa-exclamation-circle': !locationPermissionGranted}"></i>
+      <span *ngIf="isGettingLocation">Konumunuz alınıyor...</span>
+      <span *ngIf="!isGettingLocation && locationPermissionGranted">Konum bulundu</span>
+      <span *ngIf="!isGettingLocation && !locationPermissionGranted">Konum gerekli</span>
+      <button type="button" class="retry-button" (click)="retryLocation()" *ngIf="!locationPermissionGranted">
+        <i class="fas fa-sync-alt"></i> Tekrar Dene
+      </button>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="error">
+      <i class="fas fa-exclamation-circle"></i>
+      {{ error }}
+    </div>
+
+    <!-- Mood Selection -->
+    <div class="mood-selection">
+      <div *ngFor="let mood of moodTypes" 
+           class="mood-option" 
+           [class.selected]="moodForm.get('moodType')?.value === mood.value"
+           [style.borderColor]="getMoodColor(mood.value)"
+           (click)="moodForm.patchValue({moodType: mood.value})">
+        <span class="mood-emoji">{{ mood.icon }}</span>
+        <span class="mood-label">{{ mood.label }}</span>
+      </div>
+    </div>
+
+    <!-- Note Input -->
+    <div class="note-input">
+      <textarea formControlName="note" 
+                placeholder="Nasıl hissettiğiniz hakkında bir not ekleyin... (isteğe bağlı)"
+                rows="3"></textarea>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button type="button" class="cancel-button" (click)="onCancel()">
+        <i class="fas fa-times"></i> İptal
+      </button>
+      <button type="submit" 
+              class="submit-button" 
+              [disabled]="moodForm.invalid || isLoading || !locationPermissionGranted">
+        <i class="fas" [ngClass]="{'fa-spinner fa-spin': isLoading, 'fa-check': !isLoading}"></i>
+        {{ isLoading ? 'Kaydediliyor...' : 'Ruh Halini Paylaş' }}
+      </button>
+    </div>
+  </form>
+</div>

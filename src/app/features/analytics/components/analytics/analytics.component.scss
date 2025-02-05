@@ -1,0 +1,186 @@
+.analytics-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.analytics-header {
+  margin-bottom: 2rem;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: #666;
+    font-size: 1.1rem;
+  }
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+
+      i {
+        color: white;
+      }
+
+      .mood-emoji {
+        font-size: 2rem;
+      }
+    }
+
+    .card-content {
+      flex: 1;
+
+      h3 {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-value {
+        color: #333;
+        font-size: 1.75rem;
+        font-weight: 600;
+      }
+    }
+
+    &.total-moods .card-icon {
+      background: linear-gradient(135deg, #4CAF50, #8BC34A);
+    }
+
+    &.districts .card-icon {
+      background: linear-gradient(135deg, #2196F3, #03A9F4);
+    }
+
+    &.avg-mood .card-icon {
+      background: linear-gradient(135deg, #FF9800, #FFC107);
+    }
+  }
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+
+  .chart-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      color: #333;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 300px;
+    }
+
+    .district-selector {
+      margin-bottom: 1rem;
+
+      select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: #333;
+        background: #f8f9fa;
+        cursor: pointer;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: #2196F3;
+        }
+
+        option {
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1rem;
+
+  .spinner {
+    font-size: 2rem;
+    color: #2196F3;
+  }
+
+  p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .analytics-container {
+    padding: 1rem;
+  }
+
+  .analytics-header {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .charts-section {
+    grid-template-columns: 1fr;
+
+    .chart-card {
+      .chart-container {
+        height: 250px;
+      }
+    }
+  }
+} 

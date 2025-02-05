@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
+main {
+  height: 100%;
+  
+  &.with-header {
+    padding-top: 64px; // Header yüksekliği
+  }
+}

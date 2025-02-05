@@ -1,27 +1,217 @@
-# MoodApp
+Ruh Hali Haritası Uygulaması - Proje Detayları
+Projenin Amacı:
+Kullanıcıların günlük ruh hallerini bir harita üzerinde paylaşmalarını sağlamak, aynı zamanda bölgesel ya da genel duygu durumlarını görselleştirmek. Kullanıcıların kendilerini ifade etmelerine yardımcı olurken, toplulukla etkileşimlerini artırmayı hedefler.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+Ana Özellikler
+Ruh Hali Girişi:
 
-## Development server
+Kullanıcılar günün farklı saatlerinde ruh hallerini seçip haritada işaretler.
+Ruh hali kategorileri (mutlu, üzgün, stresli, enerjik, vb.) ikonlar ve renklerle temsil edilir.
+Kendi ruh hallerine not ekleyebilirler.
+Harita Görselleştirmesi:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Haritada belirli bir bölgedeki insanların ruh hali durumları (örneğin: çoğunlukla “mutlu” veya “stresli”) görselleştirilir.
+Renk tonları ve yoğunluk haritası ile ruh hali analizi.
+Ruh Hali Analitiği:
 
-## Code scaffolding
+Kullanıcıların geçmişteki ruh hallerini analiz edebilecekleri bir alan.
+Günlük, haftalık, aylık grafikler.
+Topluluk Özellikleri:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+İnsanların ortak ruh halleri için öneriler (örneğin: stresli bir bölgedeki kişilere meditasyon önerisi).
+Pozitif ruh halleri için teşekkür veya destek mesajları.
 
-## Build
+Sayfa Tasarımı ve Akışı
+1. Ana Sayfa
+Giriş: Kullanıcıları ruh hali bildirmeye teşvik eden bir açıklama ve başlatma düğmesi.
+Güncel Harita Görünümü:
+Bölgesel ruh halleri renk kodlarıyla görselleştirilmiş bir dünya haritası.
+Üzerine tıklanan bölgede detaylı ruh hali oranları (örneğin: %60 mutlu, %20 üzgün).
+Kendi Ruh Halini Paylaş Düğmesi:
+Kullanıcıyı ruh hali giriş sayfasına yönlendirir.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Ruh Hali Girişi Sayfası
+Kategori Seçimi:
+İkonlar ve renklerle sunulan ruh hali seçenekleri (mutlu, üzgün, sinirli, enerjik, yorgun vb.).
+Not Alanı:
+Kullanıcının ruh haline dair kısa bir not ekleyebileceği alan (örneğin: “Bugün iş yoğunluğu çok fazla”).
+Konum Seçimi:
+Harita üzerinde otomatik konum belirleme veya manuel seçim.
+Paylaş Butonu:
+Kullanıcı ruh halini paylaşır ve ana haritada işaretlenir.
+3. Harita ve Analitik Sayfası
+Harita Görünümü:
+Gerçek zamanlı ruh hali haritası.
+Yoğunluk haritası (bir bölgede hangi ruh hali daha baskınsa o gösterilir).
+Bölge filtreleri (şehir, ülke, dünya).
+Analitik Panel:
+Kullanıcının kendi ruh hali geçmişi (grafik ve tablo formatında).
+Ruh hali trendleri (örneğin: “Pazartesi günleri daha stresli, hafta sonları mutlu”).
+4. Topluluk Sayfası (Opsiyonel)
+Destek Mesajları:
+Kullanıcılar bir bölgedeki insanlara pozitif mesajlar gönderebilir.
+Pozitif Paylaşımlar:
+En çok mutlu ruh hali bildiren bölgelerden fotoğraf veya öneriler.
+Öneriler:
+Belirli ruh hallerine göre otomatik öneriler (örneğin: “Stresliyseniz şu meditasyon rehberini deneyin”).
+5. Profil Sayfası (Opsiyonel)
+Kullanıcının geçmiş ruh halleri, yorumları ve haritada yaptığı işaretlemeler.
+Profil fotoğrafı ve kişisel hedefler ekleme alanı.
 
-## Running unit tests
+Kullanıcı Deneyimi İpuçları
+Renk Psikolojisi Kullanımı:
+Ruh halleri için etkileyici renkler (örneğin, mutlu için sarı, üzgün için mavi).
+Basit ve Akıcı Arayüz:
+Mobil cihazlarda kolay kullanımı hedefleyen bir tasarım.
+Gizlilik:
+Kullanıcıların haritadaki konumları anonimleştirilir, bireysel takip yapılmaz.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Teknik Detaylar:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Frontend (Angular):
+- UI Kütüphaneleri:
+  - Angular Material (UI component framework)
+  - Leaflet veya Google Maps Angular (harita entegrasyonu)
+  - NGX-Charts veya Chart.js (grafik ve analitik görselleştirme)
+  - Angular Animations (animasyonlar)
+  - LocalStorage Service (yerel depolama)
 
-## Further help
+- State Yönetimi:
+  - Service yapısı örneğin DataBaseSevice adında bir service oluşturulur tüm stateleri bu service içinde yönetilir.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-Dosya Yapısı:
+  - Components
+  - Services
+    - DataBaseService
+    - AuthService
+    - UserService
+    - RegionService
+    - MoodEntryService
+    - ActionService
+    - ConnectionService
+    - HttpRequestService
+  - Models
+  - Interfaces
+  - Guards
+
+- Routing ve Navigasyon:
+  - Angular Router
+  - Route Guards
+  - Lazy Loading Modules
+
+- Core Özellikler:
+  - Angular CLI
+  - TypeScript
+  - Service yapısı
+  - Angular Forms (Reactive Forms)
+  - Angular HttpClient
+  - Angular PWA
+  - Angular Universal (SSR - isteğe bağlı)
+
+Backend (.NET Core):
+- .NET 8.0
+- Entity Framework Core (Code First yaklaşımı)
+- MsSql veritabanı
+- Identity Framework (kimlik doğrulama)
+- AutoMapper (nesne eşleştirme)
+- Fluent Validation (veri doğrulama)
+- Swagger/OpenAPI (API dokümantasyonu)
+
+API Mimarisi:
+- RESTful API
+- Repository Pattern
+- Unit of Work Pattern
+- CQRS (isteğe bağlı)
+- Clean Architecture
+
+Veritabanı Şeması:
+- Users
+  - Id (PK)
+  - Username
+  - Email
+  - PasswordHash
+  - CreatedAt
+  - LastLoginAt
+
+- MoodEntries
+  - Id (PK)
+  - UserId (FK)
+  - MoodType
+  - Note
+  - Latitude
+  - Longitude
+  - CreatedAt
+  - UpdatedAt
+
+- Regions
+  - Id (PK)
+  - Name
+  - Boundaries
+  - ParentRegionId (FK)
+
+- RegionMoodStats
+  - Id (PK)
+  - RegionId (FK)
+  - MoodType
+  - Count
+  - LastUpdatedAt
+
+Güvenlik:
+- JWT tabanlı kimlik doğrulama
+- HTTPS/SSL
+- API rate limiting
+- CORS politikaları
+- Veri şifreleme
+
+Deployment:
+- Frontend: 
+  - Apache veya Nginx web sunucusu
+  - Docker container
+  - Azure Static Web Apps
+  - Firebase Hosting (alternatif)
+
+- Backend:
+  - Azure App Service
+  - Azure SQL Database
+  - Azure Key Vault (hassas bilgiler için)
+
+Monitoring ve Logging:
+- Application Insights
+- Serilog
+- Error tracking (Sentry veya Raygun)
+
+Performans Optimizasyonu:
+- API caching (Redis)
+- Image optimization
+- Lazy loading modules
+- Angular performance optimization teknikleri
+  - ChangeDetectionStrategy.OnPush
+  - TrackBy fonksiyonları
+  - Virtual Scrolling
+  - Pure Pipes
+  - Web Workers
+
+CI/CD:
+- GitHub Actions veya Azure DevOps
+- Automated testing
+- Deployment automation
+
+Ölçeklenebilirlik:
+- Horizontal scaling
+- Load balancing
+- Microservices (gelecek planı)
+
+3rd Party Servisler:
+- Push Notification servisi
+- Geocoding API
+- Weather API (opsiyonel)
+- Analytics (Firebase/Google Analytics)
+
+Test Stratejisi:
+- Unit Tests (Jasmine/Karma)
+- Integration Tests
+- E2E Tests (Cypress/Protractor)
+- UI Tests
+- Load Testing
+

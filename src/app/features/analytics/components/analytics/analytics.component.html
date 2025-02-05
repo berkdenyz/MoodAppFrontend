@@ -1,0 +1,90 @@
+<div class="analytics-container">
+  <div class="analytics-header">
+    <h1>Ruh Hali Analizleri</h1>
+    <p class="subtitle">Farklı bölgelerdeki ruh hali desenlerini analiz edin</p>
+  </div>
+
+  <div class="analytics-content" *ngIf="!isLoading">
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+      <div class="card total-moods">
+        <div class="card-icon">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <div class="card-content">
+          <h3>Toplam Ruh Hali</h3>
+          <p class="card-value">{{ totalMoods }}</p>
+        </div>
+      </div>
+
+      <div class="card districts">
+        <div class="card-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="card-content">
+          <h3>Bölgeler</h3>
+          <p class="card-value">{{ districtAnalytics.length }}</p>
+        </div>
+      </div>
+
+      <div class="card avg-mood">
+        <div class="card-icon">
+          <span class="mood-emoji" *ngIf="mostCommonMood !== null">
+            {{ getMoodInfo(mostCommonMood).emoji }}
+          </span>
+        </div>
+        <div class="card-content">
+          <h3>En Yaygın Ruh Hali</h3>
+          <p class="card-value" *ngIf="mostCommonMood !== null">
+            {{ getMoodInfo(mostCommonMood).label }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <!-- Mood Distribution -->
+      <div class="chart-card">
+        <h2>Genel Ruh Hali Dağılımı</h2>
+        <div class="chart-container">
+          <canvas baseChart
+                  [type]="'pie'"
+                  [data]="pieChartData"
+                  [options]="pieChartOptions">
+          </canvas>
+        </div>
+      </div>
+
+      <!-- District Distribution -->
+      <div class="chart-card">
+        <h2>Bölgelere Göre Ruh Hali Tipleri</h2>
+        <div class="district-selector">
+          <select (change)="onDistrictSelect($event)" 
+                  [value]="selectedDistrict">
+            <option value="">Tüm Bölgeler</option>
+            <option *ngFor="let district of districtAnalytics" 
+                    [value]="district.name">
+              {{ district.name }}
+            </option>
+          </select>
+        </div>
+        <div class="chart-container">
+          <canvas baseChart
+                  [type]="'bar'"
+                  [data]="barChartData"
+                  [options]="barChartOptions">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="isLoading">
+    <div class="spinner">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
+    <p>Analizler yükleniyor...</p>
+  </div>
+</div> 
