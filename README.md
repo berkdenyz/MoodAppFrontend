@@ -1,217 +1,82 @@
-Ruh Hali Haritası Uygulaması - Proje Detayları
-Projenin Amacı:
-Kullanıcıların günlük ruh hallerini bir harita üzerinde paylaşmalarını sağlamak, aynı zamanda bölgesel ya da genel duygu durumlarını görselleştirmek. Kullanıcıların kendilerini ifade etmelerine yardımcı olurken, toplulukla etkileşimlerini artırmayı hedefler.
+# 🌍 Mood Map Application  
 
-Ana Özellikler
-Ruh Hali Girişi:
+## 📌 Project Overview  
+Mood Map is an interactive application that allows users to share their daily moods on a map while visualizing regional and global emotional trends. It helps users express themselves and fosters community interaction.  
 
-Kullanıcılar günün farklı saatlerinde ruh hallerini seçip haritada işaretler.
-Ruh hali kategorileri (mutlu, üzgün, stresli, enerjik, vb.) ikonlar ve renklerle temsil edilir.
-Kendi ruh hallerine not ekleyebilirler.
-Harita Görselleştirmesi:
+---
 
-Haritada belirli bir bölgedeki insanların ruh hali durumları (örneğin: çoğunlukla “mutlu” veya “stresli”) görselleştirilir.
-Renk tonları ve yoğunluk haritası ile ruh hali analizi.
-Ruh Hali Analitiği:
+## 🎯 Features  
 
-Kullanıcıların geçmişteki ruh hallerini analiz edebilecekleri bir alan.
-Günlük, haftalık, aylık grafikler.
-Topluluk Özellikleri:
+### 📝 Mood Entry  
+- Users can select their mood and mark it on the map at different times of the day.  
+- Mood categories (Happy, Sad, Stressed, Energetic, etc.) are represented with **icons and colors**.  
+- Users can add short **notes** about their current mood.  
 
-İnsanların ortak ruh halleri için öneriler (örneğin: stresli bir bölgedeki kişilere meditasyon önerisi).
-Pozitif ruh halleri için teşekkür veya destek mesajları.
+### 🗺️ Map Visualization  
+- Displays the **emotional state** of people in specific regions.  
+- Uses **color gradients and heatmaps** for better mood analysis.  
 
-Sayfa Tasarımı ve Akışı
-1. Ana Sayfa
-Giriş: Kullanıcıları ruh hali bildirmeye teşvik eden bir açıklama ve başlatma düğmesi.
-Güncel Harita Görünümü:
-Bölgesel ruh halleri renk kodlarıyla görselleştirilmiş bir dünya haritası.
-Üzerine tıklanan bölgede detaylı ruh hali oranları (örneğin: %60 mutlu, %20 üzgün).
-Kendi Ruh Halini Paylaş Düğmesi:
-Kullanıcıyı ruh hali giriş sayfasına yönlendirir.
+### 📊 Mood Analytics  
+- Users can **track** their past moods.  
+- **Daily, weekly, and monthly trends** are visualized in charts.  
 
-2. Ruh Hali Girişi Sayfası
-Kategori Seçimi:
-İkonlar ve renklerle sunulan ruh hali seçenekleri (mutlu, üzgün, sinirli, enerjik, yorgun vb.).
-Not Alanı:
-Kullanıcının ruh haline dair kısa bir not ekleyebileceği alan (örneğin: “Bugün iş yoğunluğu çok fazla”).
-Konum Seçimi:
-Harita üzerinde otomatik konum belirleme veya manuel seçim.
-Paylaş Butonu:
-Kullanıcı ruh halini paylaşır ve ana haritada işaretlenir.
-3. Harita ve Analitik Sayfası
-Harita Görünümü:
-Gerçek zamanlı ruh hali haritası.
-Yoğunluk haritası (bir bölgede hangi ruh hali daha baskınsa o gösterilir).
-Bölge filtreleri (şehir, ülke, dünya).
-Analitik Panel:
-Kullanıcının kendi ruh hali geçmişi (grafik ve tablo formatında).
-Ruh hali trendleri (örneğin: “Pazartesi günleri daha stresli, hafta sonları mutlu”).
-4. Topluluk Sayfası (Opsiyonel)
-Destek Mesajları:
-Kullanıcılar bir bölgedeki insanlara pozitif mesajlar gönderebilir.
-Pozitif Paylaşımlar:
-En çok mutlu ruh hali bildiren bölgelerden fotoğraf veya öneriler.
-Öneriler:
-Belirli ruh hallerine göre otomatik öneriler (örneğin: “Stresliyseniz şu meditasyon rehberini deneyin”).
-5. Profil Sayfası (Opsiyonel)
-Kullanıcının geçmiş ruh halleri, yorumları ve haritada yaptığı işaretlemeler.
-Profil fotoğrafı ve kişisel hedefler ekleme alanı.
+### 👥 Community Features  
+- **Suggestions** for users in certain emotional states (e.g., meditation tips for stressed regions).  
+- **Support messages** for encouraging positive moods.  
 
-Kullanıcı Deneyimi İpuçları
-Renk Psikolojisi Kullanımı:
-Ruh halleri için etkileyici renkler (örneğin, mutlu için sarı, üzgün için mavi).
-Basit ve Akıcı Arayüz:
-Mobil cihazlarda kolay kullanımı hedefleyen bir tasarım.
-Gizlilik:
-Kullanıcıların haritadaki konumları anonimleştirilir, bireysel takip yapılmaz.
+---
 
+## 📲 Application Flow  
 
-Teknik Detaylar:
+### 1️⃣ Home Page  
+✅ **Introduction:** A brief explanation encouraging users to share their mood.  
+✅ **Live Mood Map:** Displays regional emotions using **color-coded visuals**.  
+✅ **Share Mood Button:** Directs users to the **mood entry page**.  
 
-Frontend (Angular):
-- UI Kütüphaneleri:
-  - Angular Material (UI component framework)
-  - Leaflet veya Google Maps Angular (harita entegrasyonu)
-  - NGX-Charts veya Chart.js (grafik ve analitik görselleştirme)
-  - Angular Animations (animasyonlar)
-  - LocalStorage Service (yerel depolama)
+### 2️⃣ Mood Entry Page  
+✅ **Select Mood:** Choose from different moods with **icons and colors**.  
+✅ **Add Notes:** Users can add a short description of their mood.  
+✅ **Choose Location:** Auto-detection or manual selection.  
+✅ **Submit Mood:** Mood is added to the main map.  
 
-- State Yönetimi:
-  - Service yapısı örneğin DataBaseSevice adında bir service oluşturulur tüm stateleri bu service içinde yönetilir.
+### 3️⃣ Map & Analytics Page  
+✅ **Mood Map:** Real-time **mood distribution** visualization.  
+✅ **Heatmaps:** Shows the **dominant mood** in each region.  
+✅ **Filters:** View moods by **city, country, or world**.  
+✅ **Analytics Panel:** Mood history in **graph & table** formats.  
 
--Dosya Yapısı:
-  - Components
-  - Services
-    - DataBaseService
-    - AuthService
-    - UserService
-    - RegionService
-    - MoodEntryService
-    - ActionService
-    - ConnectionService
-    - HttpRequestService
-  - Models
-  - Interfaces
-  - Guards
+### 4️⃣ Community Page (Optional)  
+✅ Users can **send positive messages** to different regions.  
+✅ **Top Happy Locations** share photos & recommendations.  
+✅ **Automated Suggestions** based on user mood.  
 
-- Routing ve Navigasyon:
-  - Angular Router
-  - Route Guards
-  - Lazy Loading Modules
+### 5️⃣ Profile Page (Optional)  
+✅ **View past moods, comments, and map markings**.  
+✅ **Set personal goals & add a profile picture**.  
 
-- Core Özellikler:
-  - Angular CLI
-  - TypeScript
-  - Service yapısı
-  - Angular Forms (Reactive Forms)
-  - Angular HttpClient
-  - Angular PWA
-  - Angular Universal (SSR - isteğe bağlı)
+---
 
-Backend (.NET Core):
-- .NET 8.0
-- Entity Framework Core (Code First yaklaşımı)
-- MsSql veritabanı
-- Identity Framework (kimlik doğrulama)
-- AutoMapper (nesne eşleştirme)
-- Fluent Validation (veri doğrulama)
-- Swagger/OpenAPI (API dokümantasyonu)
+## 🎨 User Experience & Design  
+✅ **Color Psychology:** Mood-based color coding (e.g., Yellow = Happy, Blue = Sad).  
+✅ **Simple & Smooth UI:** Optimized for **mobile usability**.  
+✅ **Privacy & Anonymity:** No **personal tracking**, user locations are anonymous.  
 
-API Mimarisi:
-- RESTful API
-- Repository Pattern
-- Unit of Work Pattern
-- CQRS (isteğe bağlı)
-- Clean Architecture
+---
 
-Veritabanı Şeması:
-- Users
-  - Id (PK)
-  - Username
-  - Email
-  - PasswordHash
-  - CreatedAt
-  - LastLoginAt
+## ⚙️ Tech Stack  
 
-- MoodEntries
-  - Id (PK)
-  - UserId (FK)
-  - MoodType
-  - Note
-  - Latitude
-  - Longitude
-  - CreatedAt
-  - UpdatedAt
+### **Frontend (Angular + Ionic for Mobile)**  
+🔹 **UI Libraries:**  
+- Angular Material or Ionic Components (UI framework)  
+- Leaflet or Google Maps API (Map Integration)  
+- Ngx-Charts (Graph & Analytics Visualization)  
+- Angular Animations (Smooth Transitions)  
+- LocalStorage or IndexedDB (Local Data Storage)  
 
-- Regions
-  - Id (PK)
-  - Name
-  - Boundaries
-  - ParentRegionId (FK)
+🔹 **State Management:**  
+- NgRx or Akita  
+- Angular Query (Server State Management)  
 
-- RegionMoodStats
-  - Id (PK)
-  - RegionId (FK)
-  - MoodType
-  - Count
-  - LastUpdatedAt
-
-Güvenlik:
-- JWT tabanlı kimlik doğrulama
-- HTTPS/SSL
-- API rate limiting
-- CORS politikaları
-- Veri şifreleme
-
-Deployment:
-- Frontend: 
-  - Apache veya Nginx web sunucusu
-  - Docker container
-  - Azure Static Web Apps
-  - Firebase Hosting (alternatif)
-
-- Backend:
-  - Azure App Service
-  - Azure SQL Database
-  - Azure Key Vault (hassas bilgiler için)
-
-Monitoring ve Logging:
-- Application Insights
-- Serilog
-- Error tracking (Sentry veya Raygun)
-
-Performans Optimizasyonu:
-- API caching (Redis)
-- Image optimization
-- Lazy loading modules
-- Angular performance optimization teknikleri
-  - ChangeDetectionStrategy.OnPush
-  - TrackBy fonksiyonları
-  - Virtual Scrolling
-  - Pure Pipes
-  - Web Workers
-
-CI/CD:
-- GitHub Actions veya Azure DevOps
-- Automated testing
-- Deployment automation
-
-Ölçeklenebilirlik:
-- Horizontal scaling
-- Load balancing
-- Microservices (gelecek planı)
-
-3rd Party Servisler:
-- Push Notification servisi
-- Geocoding API
-- Weather API (opsiyonel)
-- Analytics (Firebase/Google Analytics)
-
-Test Stratejisi:
-- Unit Tests (Jasmine/Karma)
-- Integration Tests
-- E2E Tests (Cypress/Protractor)
-- UI Tests
-- Load Testing
+🔹 **Navigation:**  
+- Angular Router  
 
